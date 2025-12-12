@@ -10,12 +10,12 @@ import { useState } from "react"
 import { Mail, Phone, MapPin, Clock } from "lucide-react"
 
 const contactSchema = z.object({
-  name: z.string().min(2, "Tên phải có ít nhất 2 ký tự"),
-  email: z.string().email("Email không hợp lệ"),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
   phone: z.string().optional(),
   company: z.string().optional(),
-  subject: z.string().min(5, "Chủ đề phải có ít nhất 5 ký tự"),
-  message: z.string().min(10, "Tin nhắn phải có ít nhất 10 ký tự")
+  subject: z.string().min(5, "Subject must be at least 5 characters"),
+  message: z.string().min(10, "Message must be at least 10 characters")
 })
 
 type ContactFormData = z.infer<typeof contactSchema>
@@ -58,20 +58,20 @@ export default function ContactPage() {
     },
     {
       icon: Phone,
-      title: "Điện thoại",
-      content: "+84 (028) 3456 7890",
+      title: "Phone",
+      content: "+1 (555) 123-4567",
       color: "from-green-500 to-green-600"
     },
     {
       icon: MapPin,
-      title: "Địa chỉ",
-      content: "123 Đường Nguyễn Huệ, TP. HCM, Việt Nam",
+      title: "Address",
+      content: "123 Business Avenue, San Francisco, CA 94105",
       color: "from-purple-500 to-purple-600"
     },
     {
       icon: Clock,
-      title: "Giờ làm việc",
-      content: "Thứ 2 - Thứ 6, 9:00 - 18:00",
+      title: "Business Hours",
+      content: "Monday - Friday, 9:00 AM - 6:00 PM",
       color: "from-orange-500 to-orange-600"
     }
   ]
@@ -103,10 +103,10 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Liên hệ với chúng tôi
+              Get in Touch
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Chúng tôi yêu nghe từ bạn. Gửi cho chúng tôi một tin nhắn và chúng tôi sẽ phản hồi trong 24 giờ.
+              We'd love to hear from you. Send us a message and we'll respond as soon as possible.
             </p>
           </div>
         </div>
@@ -136,13 +136,13 @@ export default function ContactPage() {
           {/* Form */}
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-8">
-              Gửi tin nhắn cho chúng tôi
+              Send us a Message
             </h2>
 
             {submitSuccess && (
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                 <p className="text-green-700 font-semibold">
-                  ✓ Cảm ơn! Chúng tôi đã nhận được tin nhắn của bạn.
+                  ✓ Thank you! We've received your message.
                 </p>
               </div>
             )}
@@ -151,11 +151,11 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Tên
+                    Name
                   </label>
                   <Input
                     {...register("name")}
-                    placeholder="Nguyễn Văn A"
+                    placeholder="John Doe"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                   {errors.name && (
@@ -181,22 +181,22 @@ export default function ContactPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Điện thoại (tùy chọn)
+                    Phone (optional)
                   </label>
                   <Input
                     {...register("phone")}
                     type="tel"
-                    placeholder="+84 (028) 3456 7890"
+                    placeholder="+1 (555) 123-4567"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Công ty (tùy chọn)
+                    Company (optional)
                   </label>
                   <Input
                     {...register("company")}
-                    placeholder="Tên công ty"
+                    placeholder="Your Company"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -204,11 +204,11 @@ export default function ContactPage() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  Chủ đề
+                  Subject
                 </label>
                 <Input
                   {...register("subject")}
-                  placeholder="Chủ đề của bạn"
+                  placeholder="How can we help?"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
                 {errors.subject && (
@@ -218,11 +218,11 @@ export default function ContactPage() {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  Tin nhắn
+                  Message
                 </label>
                 <Textarea
                   {...register("message")}
-                  placeholder="Tin nhắn của bạn ở đây..."
+                  placeholder="Your message here..."
                   rows={6}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                 />
@@ -236,7 +236,7 @@ export default function ContactPage() {
                 disabled={isSubmitting}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition duration-300 disabled:opacity-50"
               >
-                {isSubmitting ? "Đang gửi..." : "Gửi tin nhắn"}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
@@ -248,8 +248,8 @@ export default function ContactPage() {
               <div className="text-center">
                 <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-3" />
                 <p className="text-gray-600">
-                  123 Đường Nguyễn Huệ<br />
-                  TP. HCM, Việt Nam
+                  123 Business Avenue<br />
+                  San Francisco, CA 94105
                 </p>
               </div>
             </div>
@@ -257,7 +257,7 @@ export default function ContactPage() {
             {/* Additional Info */}
             <div className="bg-blue-50 rounded-lg p-8 border border-blue-200">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Thông tin thêm
+                Additional Information
               </h3>
               <div className="space-y-4 text-gray-700">
                 <p>
@@ -270,8 +270,8 @@ export default function ContactPage() {
                   <strong>Partnership:</strong> partnership@cetus.com
                 </p>
                 <p className="mt-6">
-                  Nếu bạn có câu hỏi về tính năng, giá cả hoặc bất cứ điều gì khác, 
-                  xin vui lòng liên hệ với chúng tôi. Chúng tôi rất vui lòng được giúp bạn!
+                  If you have any questions about features, pricing, or anything else, 
+                  please feel free to reach out to us. We're happy to help!
                 </p>
               </div>
             </div>
@@ -279,11 +279,11 @@ export default function ContactPage() {
             {/* Response Time */}
             <div className="bg-green-50 rounded-lg p-8 border border-green-200">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Thời gian phản hồi
+                Response Time
               </h3>
               <p className="text-gray-700">
-                Chúng tôi cố gắng phản hồi tất cả các tin nhắn trong vòng <strong>24 giờ</strong> hoặc ít hơn. 
-                Nếu bạn không nhận được phản hồi, vui lòng kiểm tra thư mục spam của bạn.
+                We aim to respond to all messages within <strong>24 hours</strong> or less. 
+                If you don't receive a response, please check your spam folder.
               </p>
             </div>
           </div>
@@ -295,26 +295,26 @@ export default function ContactPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Các câu hỏi thường gặp
+              Frequently Asked Questions
             </h2>
           </div>
           <div className="mx-auto max-w-4xl space-y-4">
             {[
               {
-                question: "Làm cách nào để bắt đầu?",
-                answer: "Bạn có thể đăng ký miễn phí trên trang chủ của chúng tôi. Không cần thẻ tín dụng và bạn có thể dùng thử miễn phí trong 14 ngày."
+                question: "How do I get started?",
+                answer: "You can sign up for free on our homepage. No credit card required and you get a 14-day free trial with all features included."
               },
               {
-                question: "Tôi có thể hủy bất cứ lúc nào không?",
-                answer: "Có, bạn có thể hủy bất cứ lúc nào mà không cần đưa ra lý do. Chúng tôi không có hợp đồng dài hạn bắt buộc."
+                question: "Can I cancel anytime?",
+                answer: "Yes, you can cancel at any time without giving a reason. We have no long-term contracts or commitments."
               },
               {
-                question: "Bạn có hỗ trợ tích hợp không?",
-                answer: "Có, chúng tôi hỗ trợ tích hợp với hơn 100 ứng dụng phổ biến. Liên hệ với chúng tôi để biết thêm chi tiết."
+                question: "Do you support integrations?",
+                answer: "Yes, we support integrations with over 100 popular applications. Contact us for more details."
               },
               {
-                question: "Dữ liệu của tôi có an toàn không?",
-                answer: "Có, chúng tôi sử dụng mã hóa end-to-end và tuân thủ các tiêu chuẩn bảo mật quốc tế. Tất cả dữ liệu được sao lưu hàng ngày."
+                question: "Is my data safe?",
+                answer: "Yes, we use end-to-end encryption and comply with international security standards. All data is backed up daily."
               }
             ].map((faq, index) => (
               <details key={index} className="group border border-gray-200 rounded-lg p-6 hover:border-blue-300">

@@ -6,38 +6,38 @@ import { ArrowRight, Users, BarChart3, Lock, Clock, Zap, FileText } from "lucide
 export default function FeaturesPage() {
   const features = [
     {
-      title: "Quản lý nhân sự toàn diện",
-      description: "Quản lý hồ sơ nhân viên, thông tin cá nhân, chứng chỉ, kinh nghiệm một cách tập trung và hiệu quả.",
+      title: "Comprehensive HR Management",
+      description: "Manage employee profiles, personal information, certifications, and experience in a centralized and efficient manner.",
       icon: Users,
       color: "from-blue-500 to-blue-600"
     },
     {
-      title: "Phân tích và báo cáo",
-      description: "Tạo báo cáo chi tiết về nhân sự, phân tích dữ liệu với biểu đồ trực quan và dễ hiểu.",
+      title: "Analytics and Reporting",
+      description: "Generate detailed reports on HR metrics, analyze data with visual charts, and make informed business decisions.",
       icon: BarChart3,
       color: "from-green-500 to-green-600"
     },
     {
-      title: "Bảo mật dữ liệu",
-      description: "Bảo vệ thông tin nhân viên với mã hóa end-to-end và kiểm soát quyền truy cập chi tiết.",
+      title: "Data Security",
+      description: "Protect employee information with end-to-end encryption and granular access control for maximum security.",
       icon: Lock,
       color: "from-purple-500 to-purple-600"
     },
     {
-      title: "Quản lý thời gian thực",
-      description: "Theo dõi thời gian làm việc, chấm công, và tính lương một cách tự động và chính xác.",
+      title: "Real-time Management",
+      description: "Track work hours, attendance, and payroll automatically and accurately in real-time.",
       icon: Clock,
       color: "from-orange-500 to-orange-600"
     },
     {
-      title: "Hiệu suất cao",
-      description: "Hệ thống được tối ưu hóa cho tốc độ và hiệu suất, xử lý hàng nghìn nhân viên mà không giảm tốc.",
+      title: "High Performance",
+      description: "Our system is optimized for speed and performance, handling thousands of employees without slowdown.",
       icon: Zap,
       color: "from-red-500 to-red-600"
     },
     {
-      title: "Quản lý tài liệu",
-      description: "Lưu trữ và quản lý tất cả các tài liệu liên quan đến nhân viên trong một hệ thống tập trung.",
+      title: "Document Management",
+      description: "Store and manage all employee-related documents in a centralized system for easy access and organization.",
       icon: FileText,
       color: "from-cyan-500 to-cyan-600"
     }
@@ -70,19 +70,19 @@ export default function FeaturesPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Các tính năng mạnh mẽ cho HR
+              Powerful Features for HR
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Khám phá những tính năng tiên tiến giúp bạn quản lý nhân sự một cách hiệu quả và chuyên nghiệp.
+              Discover advanced features that help you manage human resources efficiently and professionally.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link href="/pricing">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg">
-                  Xem giá
+                  View Pricing
                 </Button>
               </Link>
               <Link href="/contact" className="text-sm font-semibold leading-6 text-gray-900">
-                Liên hệ <span aria-hidden="true">→</span>
+                Contact us <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
@@ -119,15 +119,15 @@ export default function FeaturesPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Sẵn sàng nâng cấp quản lý nhân sự của bạn?
+              Ready to Upgrade Your HR Management?
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Bắt đầu miễn phí ngay hôm nay và trải nghiệm sức mạnh của Cetus.
+              Start free today and experience the power of Cetus.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link href="/register">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg">
-                  Bắt đầu ngay <ArrowRight className="ml-2 h-5 w-5" />
+                  Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>

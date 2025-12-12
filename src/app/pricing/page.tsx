@@ -88,10 +88,10 @@ export default function PricingPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Giá cả đơn giản và minh bạch
+              Simple and Transparent Pricing
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Chọn gói phù hợp với nhu cầu kinh doanh của bạn. Không có phí ẩn.
+              Choose the plan that fits your business needs. No hidden fees.
             </p>
           </div>
         </div>
@@ -112,7 +112,7 @@ export default function PricingPage() {
               {plan.highlighted && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
                   <span className="inline-block bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-1 text-sm font-semibold rounded-full">
-                    Được đề xuất
+                    Recommended
                   </span>
                 </div>
               )}
@@ -124,10 +124,10 @@ export default function PricingPage() {
                 <div className="mt-6 mb-8">
                   <span className="text-5xl font-bold text-gray-900">${plan.price}</span>
                   {plan.price !== "Custom" && (
-                    <span className="text-gray-600 ml-2">/tháng</span>
+                    <span className="text-gray-600 ml-2">/month</span>
                   )}
                   {plan.price === "Custom" && (
-                    <span className="text-gray-600 ml-2">Liên hệ để được giá tốt nhất</span>
+                    <span className="text-gray-600 ml-2">Contact for best pricing</span>
                   )}
                 </div>
 
@@ -164,26 +164,26 @@ export default function PricingPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Các câu hỏi thường gặp
+              Frequently Asked Questions
             </h2>
           </div>
           <div className="mx-auto mt-12 max-w-4xl space-y-4">
             {[
               {
-                question: "Tôi có thể thay đổi gói bất cứ lúc nào không?",
-                answer: "Có, bạn có thể nâng cấp hoặc hạ cấp gói của mình bất cứ lúc nào. Thay đổi sẽ có hiệu lực ngay lập tức."
+                question: "Can I change my plan at any time?",
+                answer: "Yes, you can upgrade or downgrade your plan at any time. Changes will take effect immediately."
               },
               {
-                question: "Có giá giảm cho hợp đồng dài hạn không?",
-                answer: "Có, chúng tôi cung cấp giá đặc biệt cho các hợp đồng 6 tháng, 1 năm, 2 năm và hơn."
+                question: "Are there discounts for long-term contracts?",
+                answer: "Yes, we offer special pricing for 6-month, 1-year, 2-year, and longer contracts."
               },
               {
-                question: "Bạn có cung cấp dùng thử miễn phí không?",
-                answer: "Có, bạn có thể dùng thử miễn phí 14 ngày với tất cả các tính năng được bao gồm."
+                question: "Do you offer a free trial?",
+                answer: "Yes, you can try for free for 14 days with all features included."
               },
               {
-                question: "Hỗ trợ khách hàng có sẵn như thế nào?",
-                answer: "Chúng tôi cung cấp hỗ trợ email cho các gói Startup và Professional, và hỗ trợ 24/7 cho gói Enterprise."
+                question: "How is customer support available?",
+                answer: "We provide email support for Startup and Professional plans, and 24/7 support for Enterprise plans."
               }
             ].map((faq, index) => (
               <details key={index} className="group border border-gray-200 rounded-lg p-6 hover:border-blue-300">
@@ -207,15 +207,15 @@ export default function PricingPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Bắt đầu hôm nay
+              Start Today
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Không cần thẻ tín dụng. Dùng thử miễn phí trong 14 ngày.
+              No credit card required. Try for free for 14 days.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link href="/register">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg">
-                  Bắt đầu ngay <ArrowRight className="ml-2 h-5 w-5" />
+                  Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>

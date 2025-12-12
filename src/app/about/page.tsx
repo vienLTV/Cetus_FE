@@ -6,26 +6,26 @@ import { Users, Target, Lightbulb, Award, ArrowRight } from "lucide-react"
 export default function AboutPage() {
   const values = [
     {
-      title: "Đổi mới",
-      description: "Chúng tôi liên tục tìm kiếm các cách mới để cải thiện trải nghiệm người dùng.",
+      title: "Innovation",
+      description: "We continuously seek new ways to improve user experience and solve real problems.",
       icon: Lightbulb,
       color: "from-yellow-500 to-yellow-600"
     },
     {
-      title: "Sự minh bạch",
-      description: "Chúng tôi tin vào việc được thật thà và minh bạch với khách hàng của mình.",
+      title: "Transparency",
+      description: "We believe in being honest and transparent with our customers.",
       icon: Target,
       color: "from-blue-500 to-blue-600"
     },
     {
-      title: "Khách hàng-centric",
-      description: "Mục tiêu của chúng tôi là xây dựng các giải pháp giải quyết vấn đề thực sự của bạn.",
+      title: "Customer-centric",
+      description: "Our goal is to build solutions that solve your real problems.",
       icon: Users,
       color: "from-green-500 to-green-600"
     },
     {
-      title: "Xuất sắc",
-      description: "Chúng tôi nỗ lực để cung cấp chất lượng tốt nhất trong tất cả những gì chúng tôi làm.",
+      title: "Excellence",
+      description: "We strive to deliver the highest quality in everything we do.",
       icon: Award,
       color: "from-purple-500 to-purple-600"
     }
@@ -33,24 +33,24 @@ export default function AboutPage() {
 
   const team = [
     {
-      name: "Nguyễn Văn A",
+      name: "John Doe",
       role: "CEO & Founder",
-      bio: "10+ năm kinh nghiệm trong công nghệ và quản lý nhân sự."
+      bio: "10+ years of experience in technology and human resources management."
     },
     {
-      name: "Trần Thị B",
+      name: "Sarah Smith",
       role: "CTO",
-      bio: "Chuyên gia về backend và cloud infrastructure với 8+ năm kinh nghiệm."
+      bio: "Expert in backend and cloud infrastructure with 8+ years of experience."
     },
     {
-      name: "Lê Văn C",
+      name: "Mike Johnson",
       role: "Head of Product",
-      bio: "Đam mê thiết kế sản phẩm và trải nghiệm người dùng."
+      bio: "Passionate about product design and user experience."
     },
     {
-      name: "Phạm Thị D",
+      name: "Emily Chen",
       role: "Head of Sales",
-      bio: "Xây dựng mối quan hệ khách hàng mạnh mẽ và tăng trưởng kinh doanh."
+      bio: "Building strong customer relationships and driving business growth."
     }
   ]
 
@@ -81,11 +81,11 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Về Cetus
+              About Cetus
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Chúng tôi được thành lập vào năm 2023 với một tầm nhìn đơn giản: làm cho quản lý nhân sự dễ dàng, 
-              hiệu quả và có thể truy cập được cho mọi doanh nghiệp.
+              Founded in 2023 with a simple vision: to make human resource management easy, 
+              efficient, and accessible for every business.
             </p>
           </div>
         </div>
@@ -97,20 +97,20 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-blue-50 rounded-lg transform -skew-y-3"></div>
             <div className="relative bg-white p-8 rounded-lg border border-blue-200">
-              <h2 className="text-3xl font-bold text-gray-900">Nhiệm vụ</h2>
+              <h2 className="text-3xl font-bold text-gray-900">Mission</h2>
               <p className="mt-4 text-lg text-gray-600">
-                Cung cấp giải pháp quản lý nhân sự hiện đại, dễ sử dụng và hiệu quả giúp các 
-                doanh nghiệp quản lý lực lượng lao động của họ một cách thông minh hơn.
+                To provide modern, easy-to-use, and efficient human resource management solutions 
+                that help businesses manage their workforce smarter.
               </p>
             </div>
           </div>
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-100 to-purple-50 rounded-lg transform skew-y-3"></div>
             <div className="relative bg-white p-8 rounded-lg border border-purple-200">
-              <h2 className="text-3xl font-bold text-gray-900">Tầm nhìn</h2>
+              <h2 className="text-3xl font-bold text-gray-900">Vision</h2>
               <p className="mt-4 text-lg text-gray-600">
-                Trở thành nền tảng quản lý nhân sự được tin cậy nhất trong khu vực Đông Nam Á, 
-                giúp hàng triệu người làm việc hiệu quả hơn.
+                To become the most trusted human resource management platform in Southeast Asia, 
+                helping millions of people work more efficiently.
               </p>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Giá trị cốt lõi của chúng tôi
+              Our Core Values
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -146,10 +146,10 @@ export default function AboutPage() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 sm:py-32">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Đội ngũ của chúng tôi
+            Our Team
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Được xây dựng bởi những cá nhân tài năng từ các công ty hàng đầu.
+            Built by talented individuals from leading companies.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -175,8 +175,8 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             {[
-              { number: "500+", label: "Khách hàng" },
-              { number: "100K+", label: "Người dùng" },
+              { number: "500+", label: "Customers" },
+              { number: "100K+", label: "Users" },
               { number: "99.9%", label: "Uptime" }
             ].map((stat, index) => (
               <div key={index} className="text-center">
@@ -193,19 +193,19 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Tham gia cộng đồng của chúng tôi
+              Join Our Community
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Trở thành một phần của cuộc cách mạng quản lý nhân sự.
+              Be part of the human resources management revolution.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link href="/register">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg">
-                  Bắt đầu ngay <ArrowRight className="ml-2 h-5 w-5" />
+                  Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/contact" className="text-sm font-semibold leading-6 text-gray-900">
-                Liên hệ với chúng tôi <span aria-hidden="true">→</span>
+                Contact us <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
