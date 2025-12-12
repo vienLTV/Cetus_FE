@@ -1,58 +1,59 @@
-"use client"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Users, Target, Lightbulb, Award, ArrowRight } from "lucide-react"
+"use client";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Users, Target, Lightbulb, Award, ArrowRight } from "lucide-react";
 
 export default function AboutPage() {
   const values = [
     {
       title: "Innovation",
-      description: "We continuously seek new ways to improve user experience and solve real problems.",
+      description:
+        "We continuously seek new ways to improve user experience and solve real problems.",
       icon: Lightbulb,
-      color: "from-yellow-500 to-yellow-600"
+      color: "from-yellow-500 to-yellow-600",
     },
     {
       title: "Transparency",
       description: "We believe in being honest and transparent with our customers.",
       icon: Target,
-      color: "from-blue-500 to-blue-600"
+      color: "from-blue-500 to-blue-600",
     },
     {
       title: "Customer-centric",
       description: "Our goal is to build solutions that solve your real problems.",
       icon: Users,
-      color: "from-green-500 to-green-600"
+      color: "from-green-500 to-green-600",
     },
     {
       title: "Excellence",
       description: "We strive to deliver the highest quality in everything we do.",
       icon: Award,
-      color: "from-purple-500 to-purple-600"
-    }
-  ]
+      color: "from-purple-500 to-purple-600",
+    },
+  ];
 
   const team = [
     {
       name: "John Doe",
       role: "CEO & Founder",
-      bio: "10+ years of experience in technology and human resources management."
+      bio: "10+ years of experience in technology and human resources management.",
     },
     {
       name: "Sarah Smith",
       role: "CTO",
-      bio: "Expert in backend and cloud infrastructure with 8+ years of experience."
+      bio: "Expert in backend and cloud infrastructure with 8+ years of experience.",
     },
     {
       name: "Mike Johnson",
       role: "Head of Product",
-      bio: "Passionate about product design and user experience."
+      bio: "Passionate about product design and user experience.",
     },
     {
       name: "Emily Chen",
       role: "Head of Sales",
-      bio: "Building strong customer relationships and driving business growth."
-    }
-  ]
+      bio: "Building strong customer relationships and driving business growth.",
+    },
+  ];
 
   return (
     <div className="bg-white">
@@ -65,13 +66,23 @@ export default function AboutPage() {
             </Link>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <Link href="/features" className="text-sm font-semibold leading-6 text-gray-900">Features</Link>
-            <Link href="/pricing" className="text-sm font-semibold leading-6 text-gray-900">Pricing</Link>
-            <Link href="/about" className="text-sm font-semibold leading-6 text-blue-600">About</Link>
-            <Link href="/contact" className="text-sm font-semibold leading-6 text-gray-900">Contact</Link>
+            <Link href="/features" className="text-sm font-semibold leading-6 text-gray-900">
+              Features
+            </Link>
+            <Link href="/pricing" className="text-sm font-semibold leading-6 text-gray-900">
+              Pricing
+            </Link>
+            <Link href="/about" className="text-sm font-semibold leading-6 text-blue-600">
+              About
+            </Link>
+            <Link href="/contact" className="text-sm font-semibold leading-6 text-gray-900">
+              Contact
+            </Link>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">Log in</Link>
+            <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+              Log in
+            </Link>
           </div>
         </nav>
       </header>
@@ -84,7 +95,7 @@ export default function AboutPage() {
               About Cetus
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Founded in 2023 with a simple vision: to make human resource management easy, 
+              Founded in 2023 with a simple vision: to make human resource management easy,
               efficient, and accessible for every business.
             </p>
           </div>
@@ -99,7 +110,7 @@ export default function AboutPage() {
             <div className="relative bg-white p-8 rounded-lg border border-blue-200">
               <h2 className="text-3xl font-bold text-gray-900">Mission</h2>
               <p className="mt-4 text-lg text-gray-600">
-                To provide modern, easy-to-use, and efficient human resource management solutions 
+                To provide modern, easy-to-use, and efficient human resource management solutions
                 that help businesses manage their workforce smarter.
               </p>
             </div>
@@ -109,7 +120,7 @@ export default function AboutPage() {
             <div className="relative bg-white p-8 rounded-lg border border-purple-200">
               <h2 className="text-3xl font-bold text-gray-900">Vision</h2>
               <p className="mt-4 text-lg text-gray-600">
-                To become the most trusted human resource management platform in Southeast Asia, 
+                To become the most trusted human resource management platform in Southeast Asia,
                 helping millions of people work more efficiently.
               </p>
             </div>
@@ -127,16 +138,21 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value, index) => {
-              const Icon = value.icon
+              const Icon = value.icon;
               return (
-                <div key={index} className="bg-white p-8 rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-lg transition duration-300">
-                  <div className={`inline-flex rounded-lg bg-gradient-to-r ${value.color} p-3 text-white`}>
+                <div
+                  key={index}
+                  className="bg-white p-8 rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-lg transition duration-300"
+                >
+                  <div
+                    className={`inline-flex rounded-lg bg-gradient-to-r ${value.color} p-3 text-white`}
+                  >
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="mt-4 text-lg font-semibold text-gray-900">{value.title}</h3>
                   <p className="mt-2 text-gray-600">{value.description}</p>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
@@ -145,9 +161,7 @@ export default function AboutPage() {
       {/* Team Section */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 sm:py-32">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Our Team
-          </h2>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Team</h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Built by talented individuals from leading companies.
           </p>
@@ -158,7 +172,10 @@ export default function AboutPage() {
               <div className="flex justify-center mb-4">
                 <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
                   <span className="text-3xl font-bold text-white">
-                    {member.name.split(" ").map(n => n[0]).join("")}
+                    {member.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
                   </span>
                 </div>
               </div>
@@ -177,7 +194,7 @@ export default function AboutPage() {
             {[
               { number: "500+", label: "Customers" },
               { number: "100K+", label: "Users" },
-              { number: "99.9%", label: "Uptime" }
+              { number: "99.9%", label: "Uptime" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl sm:text-5xl font-bold text-white">{stat.number}</div>
@@ -212,5 +229,5 @@ export default function AboutPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

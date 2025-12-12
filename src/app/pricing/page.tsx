@@ -1,7 +1,7 @@
-"use client"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Check, ArrowRight } from "lucide-react"
+"use client";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Check, ArrowRight } from "lucide-react";
 
 export default function PricingPage() {
   const plans = [
@@ -16,10 +16,10 @@ export default function PricingPage() {
         "Basic reporting",
         "Email support",
         "5GB storage",
-        "Mobile app access"
+        "Mobile app access",
       ],
       cta: "Get Started",
-      highlighted: false
+      highlighted: false,
     },
     {
       name: "Professional",
@@ -35,10 +35,10 @@ export default function PricingPage() {
         "Mobile app access",
         "API access",
         "Advanced analytics",
-        "Custom workflows"
+        "Custom workflows",
       ],
       cta: "Get Started",
-      highlighted: true
+      highlighted: true,
     },
     {
       name: "Enterprise",
@@ -54,12 +54,12 @@ export default function PricingPage() {
         "Single sign-on (SSO)",
         "Custom development",
         "Advanced security",
-        "Compliance tools"
+        "Compliance tools",
       ],
       cta: "Contact Sales",
-      highlighted: false
-    }
-  ]
+      highlighted: false,
+    },
+  ];
 
   return (
     <div className="bg-white">
@@ -72,13 +72,23 @@ export default function PricingPage() {
             </Link>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <Link href="/features" className="text-sm font-semibold leading-6 text-gray-900">Features</Link>
-            <Link href="/pricing" className="text-sm font-semibold leading-6 text-blue-600">Pricing</Link>
-            <Link href="/about" className="text-sm font-semibold leading-6 text-gray-900">About</Link>
-            <Link href="/contact" className="text-sm font-semibold leading-6 text-gray-900">Contact</Link>
+            <Link href="/features" className="text-sm font-semibold leading-6 text-gray-900">
+              Features
+            </Link>
+            <Link href="/pricing" className="text-sm font-semibold leading-6 text-blue-600">
+              Pricing
+            </Link>
+            <Link href="/about" className="text-sm font-semibold leading-6 text-gray-900">
+              About
+            </Link>
+            <Link href="/contact" className="text-sm font-semibold leading-6 text-gray-900">
+              Contact
+            </Link>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">Log in</Link>
+            <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+              Log in
+            </Link>
           </div>
         </nav>
       </header>
@@ -123,16 +133,17 @@ export default function PricingPage() {
                 {/* Price */}
                 <div className="mt-6 mb-8">
                   <span className="text-5xl font-bold text-gray-900">${plan.price}</span>
-                  {plan.price !== "Custom" && (
-                    <span className="text-gray-600 ml-2">/month</span>
-                  )}
+                  {plan.price !== "Custom" && <span className="text-gray-600 ml-2">/month</span>}
                   {plan.price === "Custom" && (
                     <span className="text-gray-600 ml-2">Contact for best pricing</span>
                   )}
                 </div>
 
                 {/* CTA Button */}
-                <Link href={plan.price === "Custom" ? "/contact" : "/register"} className="w-full mb-8">
+                <Link
+                  href={plan.price === "Custom" ? "/contact" : "/register"}
+                  className="w-full mb-8"
+                >
                   <Button
                     className={`w-full py-6 text-lg font-semibold transition-all duration-300 ${
                       plan.highlighted
@@ -171,27 +182,38 @@ export default function PricingPage() {
             {[
               {
                 question: "Can I change my plan at any time?",
-                answer: "Yes, you can upgrade or downgrade your plan at any time. Changes will take effect immediately."
+                answer:
+                  "Yes, you can upgrade or downgrade your plan at any time. Changes will take effect immediately.",
               },
               {
                 question: "Are there discounts for long-term contracts?",
-                answer: "Yes, we offer special pricing for 6-month, 1-year, 2-year, and longer contracts."
+                answer:
+                  "Yes, we offer special pricing for 6-month, 1-year, 2-year, and longer contracts.",
               },
               {
                 question: "Do you offer a free trial?",
-                answer: "Yes, you can try for free for 14 days with all features included."
+                answer: "Yes, you can try for free for 14 days with all features included.",
               },
               {
                 question: "How is customer support available?",
-                answer: "We provide email support for Startup and Professional plans, and 24/7 support for Enterprise plans."
-              }
+                answer:
+                  "We provide email support for Startup and Professional plans, and 24/7 support for Enterprise plans.",
+              },
             ].map((faq, index) => (
-              <details key={index} className="group border border-gray-200 rounded-lg p-6 hover:border-blue-300">
+              <details
+                key={index}
+                className="group border border-gray-200 rounded-lg p-6 hover:border-blue-300"
+              >
                 <summary className="flex cursor-pointer items-center justify-between font-semibold text-gray-900">
                   {faq.question}
                   <span className="transition group-open:rotate-180">
                     <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                      />
                     </svg>
                   </span>
                 </summary>
@@ -223,5 +245,5 @@ export default function PricingPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
