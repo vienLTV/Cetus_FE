@@ -29,8 +29,7 @@ const PersonalPage = ({ params }: PersonalProps) => {
       setIsLoading(true);
 
       // Determine which employee ID to use
-      const effectiveEmployeeId =
-        params.employeeId || localStorage.getItem("employeeId");
+      const effectiveEmployeeId = params.employeeId || localStorage.getItem("employeeId");
 
       if (!effectiveEmployeeId) {
         throw new Error("No employee ID available");
@@ -95,9 +94,7 @@ const PersonalPage = ({ params }: PersonalProps) => {
   return (
     <div className="container mx-auto p-2">
       <h1 className="text-primary-heading mb-1">Personal</h1>
-      <p className="text-muted-foreground mb-3">
-        All of Employee Personal Information
-      </p>
+      <p className="text-muted-foreground mb-3">All of Employee Personal Information</p>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="col-span-2">
@@ -133,19 +130,13 @@ const PersonalPage = ({ params }: PersonalProps) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                   <Card className="border border-gray-300">
                     <CardHeader>
-                      <CardTitle className="text-primary-md">
-                        Company Information
-                      </CardTitle>
+                      <CardTitle className="text-primary-md">Company Information</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <dl className="space-y-2">
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Company email
-                          </dt>
-                          <dd className="mt-1 text-md font-medium">
-                            {employeeData.companyEmail}
-                          </dd>
+                          <dt className="text-sm font-medium text-gray-500">Company email</dt>
+                          <dd className="mt-1 text-md font-medium">{employeeData.companyEmail}</dd>
                         </div>
                         <div>
                           <dt className="text-sm font-medium text-gray-500">
@@ -156,41 +147,33 @@ const PersonalPage = ({ params }: PersonalProps) => {
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Employee status
-                          </dt>
+                          <dt className="text-sm font-medium text-gray-500">Employee status</dt>
                           <dd
                             className={`p-2 mt-2 inline-flex text-xs leading-5 ${
                               employeeData.employeeStatus === "OFFICIAL"
                                 ? "label-primary"
                                 : employeeData.employeeStatus === "PROBATION"
-                                  ? "label-warning"
-                                  : "bg-gray-100 text-gray-800"
+                                ? "label-warning"
+                                : "bg-gray-100 text-gray-800"
                             }`}
                           >
                             {employeeData.employeeStatus}
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Job Title
-                          </dt>
+                          <dt className="text-sm font-medium text-gray-500">Job Title</dt>
                           <dd className="mt-1 text-md font-medium">
                             {employeeData.jobTitle?.title || "N/A"}
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Team
-                          </dt>
+                          <dt className="text-sm font-medium text-gray-500">Team</dt>
                           <dd className="mt-1 text-md font-medium">
                             {employeeData.team?.name || "N/A"}
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Department
-                          </dt>
+                          <dt className="text-sm font-medium text-gray-500">Department</dt>
                           <dd className="mt-1 text-md font-medium">
                             {employeeData.department?.name || "N/A"}
                           </dd>
@@ -200,47 +183,31 @@ const PersonalPage = ({ params }: PersonalProps) => {
                   </Card>
                   <Card className="border border-gray-300">
                     <CardHeader>
-                      <CardTitle className="text-primary-md">
-                        Personal Detail
-                      </CardTitle>
+                      <CardTitle className="text-primary-md">Personal Detail</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <dl className="space-y-2">
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Gender
-                          </dt>
+                          <dt className="text-sm font-medium text-gray-500">Gender</dt>
                           <dd className="mt-1 text-md font-medium">
                             {employeeData.gender == "MALE"
                               ? "Male"
                               : employeeData.gender == "FEMALE"
-                                ? "Female"
-                                : "Other"}
+                              ? "Female"
+                              : "Other"}
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            First Name
-                          </dt>
-                          <dd className="mt-1 text-md font-medium">
-                            {employeeData.firstName}
-                          </dd>
+                          <dt className="text-sm font-medium text-gray-500">First Name</dt>
+                          <dd className="mt-1 text-md font-medium">{employeeData.firstName}</dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Last Name
-                          </dt>
-                          <dd className="mt-1 text-md font-medium">
-                            {employeeData.lastName}
-                          </dd>
+                          <dt className="text-sm font-medium text-gray-500">Last Name</dt>
+                          <dd className="mt-1 text-md font-medium">{employeeData.lastName}</dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Personal Email
-                          </dt>
-                          <dd className="mt-1 text-md font-medium">
-                            {employeeData.personalEmail}
-                          </dd>
+                          <dt className="text-sm font-medium text-gray-500">Personal Email</dt>
+                          <dd className="mt-1 text-md font-medium">{employeeData.personalEmail}</dd>
                         </div>
                         <div>
                           <dt className="text-sm font-medium text-gray-500">
@@ -251,58 +218,45 @@ const PersonalPage = ({ params }: PersonalProps) => {
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Current Address
-                          </dt>
+                          <dt className="text-sm font-medium text-gray-500">Current Address</dt>
                           <dd className="mt-1 text-md font-medium">
                             {employeeData.currentAddress}
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Date of Birth
-                          </dt>
-                          <dd className="mt-1 text-md font-medium">
-                            {employeeData.dateOfBirth}
-                          </dd>
+                          <dt className="text-sm font-medium text-gray-500">Date of Birth</dt>
+                          <dd className="mt-1 text-md font-medium">{employeeData.dateOfBirth}</dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Place of Birth
-                          </dt>
-                          <dd className="mt-1 text-md font-medium">
-                            {employeeData.birthPlace}
-                          </dd>
+                          <dt className="text-sm font-medium text-gray-500">Place of Birth</dt>
+                          <dd className="mt-1 text-md font-medium">{employeeData.birthPlace}</dd>
                         </div>
                         <div>
-                          <dt className="text-sm font-medium text-gray-500">
-                            Marital Status
-                          </dt>
+                          <dt className="text-sm font-medium text-gray-500">Marital Status</dt>
                           <dd className="mt-1 text-md font-medium">
-                            {employeeData.maritalStatus == "MARRIED"
-                              ? "Married"
-                              : "Not married"}
+                            {employeeData.maritalStatus == "MARRIED" ? "Married" : "Not married"}
                           </dd>
                         </div>
                       </dl>
                     </CardContent>
                   </Card>
                 </div>
-                <div className="mt-3 flex justify-start items-center">
-                  <UpdateEmployeeModal
-                    employeeId={employeeData.employeeId}
-                    employeeUpdated={handleEmployeeUpdated}
-                  />
-                  <div className="p-2">
-                    {employeeData.employeeId !==
-                      localStorage.getItem("employeeId") &&
-                      localStorage.getItem("role") == "OWNER" && (
+                <div className="mt-3 flex justify-start items-center gap-3">
+                  <div className="w-32">
+                    <UpdateEmployeeModal
+                      employeeId={employeeData.employeeId}
+                      employeeUpdated={handleEmployeeUpdated}
+                    />
+                  </div>
+                  {employeeData.employeeId !== localStorage.getItem("employeeId") &&
+                    localStorage.getItem("role") == "OWNER" && (
+                      <div className="w-32">
                         <DeleteEmployeeModal
                           employee={employeeData}
                           employeeDeleted={handleEmployeeDeleted}
                         />
-                      )}
-                  </div>
+                      </div>
+                    )}
                 </div>
               </TabsContent>
               <TabsContent value="history">
@@ -351,9 +305,7 @@ const PersonalPage = ({ params }: PersonalProps) => {
                 )}
               </div>
               <h2 className="text-xl text-primary-md">{`${employeeData.firstName} ${employeeData.lastName}`}</h2>
-              <p className="text-muted-foreground">
-                {employeeData.jobTitle?.title || "N/A"}
-              </p>
+              <p className="text-muted-foreground">{employeeData.jobTitle?.title || "N/A"}</p>
               <div className="mt-4">
                 <AvatarUploadDialog
                   employeeId={employeeData.employeeId}
@@ -372,8 +324,8 @@ const PersonalPage = ({ params }: PersonalProps) => {
                     employeeData.employeeStatus === "OFFICIAL"
                       ? "label-primary"
                       : employeeData.employeeStatus === "PROBATION"
-                        ? "label-warning"
-                        : "bg-gray-100 text-gray-800"
+                      ? "label-warning"
+                      : "bg-gray-100 text-gray-800"
                   }`}
                 >
                   {employeeData.employeeStatus}

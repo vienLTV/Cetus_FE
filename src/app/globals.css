@@ -89,6 +89,11 @@ body {
   font-size: 0.875rem;
   font-weight: 600;
   background: white;
+  transition: all 0.2s ease;
+}
+
+.button-primary:hover {
+  background-color: #f0f7ff !important;
 }
 
 .button-red {
@@ -103,21 +108,26 @@ body {
   font-size: 0.875rem;
   font-weight: 600;
   background: white;
+  transition: all 0.2s ease;
+}
+
+.button-red:hover {
+  background-color: #fff5f5 !important;
 }
 
 .text-primary-heading {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #054FA5;
+  color: #054fa5;
 }
 
 .text-primary-md {
-  color: #054FA5;
+  color: #054fa5;
 }
 
 .border-secondary {
   --tw-border-opacity: 1;
-    border-color: rgb(156 163 175 / var(--tw-border-opacity));
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
 .label-primary {
