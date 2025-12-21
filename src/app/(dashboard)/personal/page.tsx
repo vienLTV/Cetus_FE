@@ -23,6 +23,19 @@ const PersonalPage = ({ params }: PersonalProps) => {
   const [error] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState("personal");
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [history, setHistory] = useState<
+    {
+      changedAt: string;
+      changedBy: string;
+      fieldName: string;
+      oldValue: string | null;
+      newValue: string | null;
+      changeType: string;
+    }[]
+  >([]);
+  const [historyLoading, setHistoryLoading] = useState(false);
+  const [historyError, setHistoryError] = useState<string | null>(null);
+  const [historyLoaded, setHistoryLoaded] = useState(false);
 
   const fetchEmployeeData = async () => {
     try {
@@ -42,6 +55,11 @@ const PersonalPage = ({ params }: PersonalProps) => {
       }
       const data = await response.json();
       setEmployeeData(data.data);
+
+      // reset history state when employee changes
+      setHistory([]);
+      setHistoryError(null);
+      setHistoryLoaded(false);
 
       await fetchAvatarImage(effectiveEmployeeId);
     } catch (error) {
@@ -73,6 +91,62 @@ const PersonalPage = ({ params }: PersonalProps) => {
     fetchEmployeeData();
   }, []);
 
+  const fetchEmployeeHistory = async (employeeId: string) => {
+    try {
+      setHistoryLoading(true);
+      setHistoryError(null);
+
+      const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+      if (!token) {
+        setHistoryError("You are not authorized to view employee history.");
+        return;
+      }
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/employee-history/employee/${employeeId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 401) {
+        setHistoryError("You are not authorized to view employee history.");
+        return;
+      }
+
+      if (response.status === 403) {
+        setHistoryError("You don't have permission to view employee history.");
+        return;
+      }
+
+      if (!response.ok) {
+        setHistoryError("Failed to load employee history. Please try again.");
+        return;
+      }
+
+      const data = await response.json();
+      const records = data?.data?.items || data?.data || data || [];
+      setHistory(Array.isArray(records) ? records : []);
+    } catch (err) {
+      console.error("Error fetching employee history:", err);
+      setHistoryError("Failed to load employee history. Please try again.");
+    } finally {
+      setHistoryLoaded(true);
+      setHistoryLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (activeTab !== "history") return;
+    if (!employeeData?.employeeId) return;
+    if (historyLoaded) return;
+
+    fetchEmployeeHistory(employeeData.employeeId);
+  }, [activeTab, employeeData?.employeeId, historyLoaded]);
+
   const handleEmployeeUpdated = () => {
     fetchEmployeeData();
   };
@@ -89,6 +163,12 @@ const PersonalPage = ({ params }: PersonalProps) => {
 
   const handleAvatarUpdate = () => {
     fetchEmployeeData();
+  };
+
+  const formatDateTime = (value: string) => {
+    if (!value) return "N/A";
+    const d = new Date(value);
+    return isNaN(d.getTime()) ? value : d.toLocaleString();
   };
 
   return (
@@ -265,7 +345,63 @@ const PersonalPage = ({ params }: PersonalProps) => {
                     <CardTitle>Employee History</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p>Employee history information will be displayed here.</p>
+                    {historyLoading ? (
+                      <p className="text-sm text-gray-600">Loading employee history...</p>
+                    ) : historyError ? (
+                      <p className="text-sm text-red-600">{historyError}</p>
+                    ) : history.length === 0 ? (
+                      <p className="text-sm text-gray-600">No history recorded yet.</p>
+                    ) : (
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full divide-y divide-gray-200 border">
+                          <thead className="bg-gray-50">
+                            <tr>
+                              <th className="px-4 py-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Date
+                              </th>
+                              <th className="px-4 py-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Changed By
+                              </th>
+                              <th className="px-4 py-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Field
+                              </th>
+                              <th className="px-4 py-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Old → New
+                              </th>
+                              <th className="px-4 py-2 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                Type
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            {history.map((item, idx) => (
+                              <tr key={`${item.changedAt}-${idx}`} className="hover:bg-gray-50">
+                                <td className="px-4 py-2 text-sm text-gray-800">
+                                  {formatDateTime(item.changedAt)}
+                                </td>
+                                <td className="px-4 py-2 text-sm text-gray-800">
+                                  {item.changedBy || "N/A"}
+                                </td>
+                                <td className="px-4 py-2 text-sm text-gray-800">
+                                  {item.fieldName || "N/A"}
+                                </td>
+                                <td className="px-4 py-2 text-sm text-gray-800">
+                                  <div className="flex flex-col">
+                                    <span className="text-gray-500 line-through">
+                                      {item.oldValue ?? "N/A"}
+                                    </span>
+                                    <span className="text-gray-900">{item.newValue ?? "N/A"}</span>
+                                  </div>
+                                </td>
+                                <td className="px-4 py-2 text-sm font-semibold text-gray-800">
+                                  {item.changeType || ""}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </TabsContent>
