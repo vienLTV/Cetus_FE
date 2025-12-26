@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import {
   Area,
   AreaChart,
@@ -28,8 +29,40 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+import { api } from "@/app/utils/api"
+
+interface AttendanceDashboardSummary {
+  totalEmployees: number;
+  totalAttendanceToday: number;
+}
 
 export function HomeChart() {
+  const [attendanceData, setAttendanceData] = useState<AttendanceDashboardSummary | null>(null);
+  const [isLoadingAttendance, setIsLoadingAttendance] = useState(true);
+  const [attendanceError, setAttendanceError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchAttendanceSummary = async () => {
+      try {
+        setIsLoadingAttendance(true);
+        setAttendanceError(null);
+        const response = await api.get("/attendance/dashboard-summary");
+        if (!response.ok) {
+          throw new Error("Failed to fetch attendance data");
+        }
+        const data = await response.json();
+        setAttendanceData(data.data);
+      } catch (error) {
+        console.error("Error fetching attendance summary:", error);
+        setAttendanceError("Failed to load attendance data");
+      } finally {
+        setIsLoadingAttendance(false);
+      }
+    };
+
+    fetchAttendanceSummary();
+  }, []);
+
   return (
     <div className="grid gap-6 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
       <Card className="w-full border border-gray-400">
@@ -143,51 +176,34 @@ export function HomeChart() {
 
       <Card className="w-full border border-gray-400">
         <CardHeader>
-          <CardTitle className="text-primary-md">Training Completion</CardTitle>
-          <CardDescription>Percentage of employees who completed required training</CardDescription>
+          <CardTitle className="text-primary-md">Attendance Today</CardTitle>
+          <CardDescription>Employees who checked in today</CardDescription>
         </CardHeader>
         <CardContent>
-          <ChartContainer
-            config={{
-              completion: {
-                label: "Completion",
-                color: "hsl(var(--chart-4))",
-              },
-            }}
-            className="w-full h-[300px]"
-          >
-            <ResponsiveContainer width="100%" height="100%">
-              <RadialBarChart
-                innerRadius="60%"
-                outerRadius="80%"
-                data={[{ name: 'Completion Rate', value: 85 }]}
-                startAngle={180}
-                endAngle={0}
-              >
-                <PolarAngleAxis
-                  type="number"
-                  domain={[0, 100]}
-                  angleAxisId={0}
-                  tick={false}
-                />
-                <RadialBar
-                  background
-                  dataKey="value"
-                  cornerRadius={15}
-                  fill="var(--color-completion)"
-                />
-                <text
-                  x="50%"
-                  y="50%"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  className="text-2xl font-bold"
-                >
-                  85%
-                </text>
-              </RadialBarChart>
-            </ResponsiveContainer>
-          </ChartContainer>
+          {isLoadingAttendance ? (
+            <div className="w-full h-[300px] flex items-center justify-center">
+              <p className="text-gray-500">Loading attendance data...</p>
+            </div>
+          ) : attendanceError ? (
+            <div className="w-full h-[300px] flex items-center justify-center">
+              <p className="text-red-500">{attendanceError}</p>
+            </div>
+          ) : attendanceData ? (
+            <div className="w-full h-[300px] flex items-center justify-center">
+              <div className="text-center">
+                <p className="text-4xl font-bold text-primary">
+                  {attendanceData.totalAttendanceToday} / {attendanceData.totalEmployees}
+                </p>
+                <p className="text-lg text-gray-600 mt-2">
+                  employees checked in today
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="w-full h-[300px] flex items-center justify-center">
+              <p className="text-gray-500">No attendance data available</p>
+            </div>
+          )}
         </CardContent>
       </Card>
 
